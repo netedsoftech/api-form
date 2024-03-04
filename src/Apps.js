@@ -226,6 +226,70 @@ export default function Apps() {
         e.preventDefault(); // prevent the default action (scroll / move caret)
       }
 
+
+
+
+
+
+
+
+
+
+
+
+      $(function () {
+        $("#range").daterangepicker({
+          autoUpdateInput: false,
+          autoApply: true,
+          minDate: new Date(),
+          locale: {
+            cancelLabel: "Clear",
+          },
+        });
+
+        $("#range").on("apply.daterangepicker", function (ev, picker) {
+          $(this).val(
+            picker.startDate.format("YYYY/MM/DD") +
+              " - " +
+              picker.endDate.format("YYYY/MM/DD")
+          );
+        });
+
+        $("#range").on("cancel.daterangepicker", function (ev, picker) {
+          $(this).val("");
+        });
+      });
+
+      // $("#depart").daterangepicker(
+      //   {
+      //     singleDatePicker: true,
+      //     autoUpdateInput: false,
+      //     autoApply: true,
+      //     minDate: new Date(),
+      //   },
+      //   (from_date) => {
+      //     $("#depart").val(from_date.format("YYYY/MM/DD"));
+      //   }
+      // );
+
+
+      
+      
+      $(function () {
+        $("#depart").daterangepicker({
+          singleDatePicker: true, // Set to true for a single date picker
+          autoApply: true,
+          minDate: new Date(),
+          locale: {
+            cancelLabel: "Clear",
+          },
+        });
+      
+        $("#depart").on("apply.daterangepicker", function (ev, picker) {
+          $(this).val(picker.startDate.format("YYYY/MM/DD"));
+        });
+      });
+      
 }
 
 
